@@ -1,0 +1,99 @@
+// 颜色函数,不需要实际写在样式表里面,是预处理器自带的 直接调用即可
+// lighten(颜色值, 10%); /* 返回的颜色在'color'基础上变亮10% */
+// darken(颜色值, 10%); /* 返回的颜色在'color'基础上变暗10% */
+// saturate(颜色值, 10%); /* 返回的颜色在'color'基础上饱和度增加10% */
+// desaturate(颜色值, 10%); /* 返回的颜色在'color'基础上饱和度降低10% */
+
+// 声明变量
+textColor = green;
+mainColor = #963;
+fontSzie = 14px;
+siteWidth = 84px;
+borderStyle = dotted;
+
+// 定义调用方法
+bc() {
+  background-color: arguments;
+}
+
+// 定义公用函数样式
+commoncss(sz, cr) {
+  // color: saturate(#6A8D20, 50%);
+  line-height: 25px;
+  text-align: center;
+  padding-top: 15px;
+  font-size: sz;
+  color: cr;
+}
+
+.generic {
+  // 调用公用函数样式
+  commoncss(20px, green);
+}
+
+// 定义样式时 stylues中大括号 分号等可以不用写
+.fontSty {
+  color: darken(textColor, 10%); // 生效
+  // color mainColor;
+  font-size: 18px;
+}
+
+textarea, input {
+  border: 1px solid #333;
+  bc(red)
+}
+
+.home {
+  input {
+    border: 1px solid;
+    &:hover {
+      color: red;
+      border: 5px solid;
+    }
+  }
+}
+
+/* 混合 */
+/* 可以不使用任何符号，直接声明Mixins名,定义参数和默认值之间用等号（=）来连接 */
+/* 自定义一个样式函数，作为单独的一个模块在后续被引用 */
+error(br) {
+  border: br solid #f00;
+  color: #f00;
+}
+
+/* 调用error Mixins */
+.generic-error {
+  error(0);
+}
+
+/* 调用error mixins，并将参数$borderWidth的值重定义为5px */
+.login-error {
+  error(20px);
+}
+
+// 定义用于继承的样式类
+.block {
+  position: relative;
+  margin: 10px 5px;
+  padding: 2px;
+  font-size: 25px;
+}
+
+.text_p {
+  /* 继承.block选择器下所有样式 */
+  @extend .block;
+  background-color: saturate(textColor, 80%);
+  font-size: 18px;
+  bc(red);
+}
+
+// 运算符
+.spanYun {
+  border: (siteWidth / 2) solid desaturate(textColor, 90%);
+  font-size: fontSzie;
+  color: mainColor;
+  margin-top: 50px;
+}
+
+
+

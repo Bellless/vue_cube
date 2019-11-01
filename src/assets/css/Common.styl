@@ -1,0 +1,70 @@
+// 测试项目 分类组件样式
+* {
+	margin: 0;
+	padding: 0;
+}
+html,
+body {
+	background-color: rgb(236, 236, 236);
+}
+// 字体大小变量
+$f_small  = 12px
+$f_normal = 13px
+$f_iptxt = 14px
+$f_medium = 15px
+$f_large  = 22px
+$f_super  = 30px
+// 颜色变量
+//黑色
+$c_black = #313536
+//蓝色
+$c_blue = #2e98e2
+//灰色
+$c_gray = #d4d4d4
+//绿色
+$c_green = #03BD00
+//青色
+$c_cyan = #29B475
+//橘黄
+$c_orange = #ff9100
+//金色
+$c_yellow = #FFCB10
+//红色
+$c_red = #ec2a00
+//粉色
+$c_pink = #F02387
+//白色
+$c_white = #fff
+// 公用字体大小和颜色样式
+_common_font(sz,cr){
+  font-size: sz ;
+  color: cr;
+}
+//公用css背景图片
+_common_img(bcg_url){
+  background-image: url(bcg_url);
+  background-size: 100%;
+  background-position: center center;
+  -webkit-background-size: 100% 100%;
+  -o-background-size: 100%;
+}
+//显示方式
+_display(arg=block){
+  display:arg
+}
+.template{
+  position:relative;
+  height:100%;
+}
+// 头部导航栏带字体
+.header{
+  position: relative;
+  width: 100%;
+  height: 80px;
+  background-color: lighten($c_orange, 10%);
+  span {
+    position:relative;
+    top: 50px;
+    _common_font($f_large,darken($c_black,50%));
+  }
+}
