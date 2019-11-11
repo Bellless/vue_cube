@@ -1,16 +1,20 @@
 <template>
   <div class="template">
-    <!-- <div id="nav">
+    <div id="nav">
       <router-link to="/Home">Home</router-link> |
       <router-link :to="{name:'about',params:{name:name}}">About</router-link>|
       <router-link to="/scrollTap">scroll</router-link>|
-    </div> -->
+    </div>
     <div class="header_index">
         <cube-input v-model="search_value"></cube-input>
+        <!-- 伪类设置 -->
     </div>
+    <p class="border_xia">下划线</p>
     <!-- 预留坑 渲染需要的路由内容 -->
     <router-view v-if="isRouterAlive" />
-    <a @click="clearcook">clear Cook</a><br>
+    <router-link to="/Car">Car组件</router-link><br>
+    <a @click="clearcook">clear Cook事件</a><br>
+    <router-link to="/Classification">Classification组件</router-link>
   </div>
 </template>
 
@@ -32,6 +36,7 @@ export default {
       isRouterAlive: true,
       search_value: "",
       params:this.$store.state.token,
+      localstore_s:'',
     };
   },  
   watch: {
@@ -45,11 +50,11 @@ export default {
         })
         alert("输入最多10位")
       }
-      this.putAxios('posts/1',{
-        id: 1,
-        title: 'foo',
-        body: 'bar',
-        userId: 1
+      this.getAxios('/posts',{
+        // id: 1,
+        // title: 'foo',
+        // body: 'bar',
+        // userId: 1
       }).then((data)=>{
         console.log(data);
       }).catch((err)=>{
@@ -74,7 +79,6 @@ export default {
       alert("清除成功！")
     },
     log() {
-      console.log("aaaa");
       // 存储需要的值(键值对的形式)
       localStorage.setItem("param", this.name);
       // Storage 发生变化（增加、更新、删除）时的 触发，
@@ -104,5 +108,19 @@ export default {
   background-color: lighten($c_orange, 30%);
   justify-content: center; /* 定义子元素相对父元素在主轴上的对齐方式(水平方向)*/
   align-items: center; /*  定义子元素相对父元素在交叉轴上如何对齐(竖着方向)*/
+}
+.border_xia::before{
+  content ''
+  display inline-block
+  height 4px
+  width 150px
+  background-color red
+}
+.border_xia::after{
+  content ''
+  display inline-block
+  height 4px
+  width 180px
+  background-color green
 }
 </style>

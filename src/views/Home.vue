@@ -12,7 +12,12 @@
 <script>
 export default {
   name: "home",
-  components: {}
+  components: {},
+  data () {
+    return {
+      acptText:"11"
+    }
+  }
 };
 </script>
 <style scoped lang="stylus">

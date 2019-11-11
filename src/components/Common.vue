@@ -1,17 +1,20 @@
 <template>
   <div class="common">
-    <p>这是全局测试组件</p>
+    <p v-show="false">这是全局测试组件</p>
     <p>这是全局测试组件</p>
     <div class="text">
       tetx
     </div>
-    <div @click="sendpro">
-      <span>哒哒哒哒哒哒</span>
+    <!-- 像父组件传递about.vue传递参数 -->
+    <div>
+      <button @click="sendpro">像父组件传递参数</button><br>
+      <span class="generic">父组件传递的数据childtwo为:{{message}}</span><br>
+      <span class="generic">父组件传递的数据childone为:{{number}}</span>
     </div>
-    <span class="generic">父组件传递的message为:{{message}}</span>
-    <input type="text" v-model="lastName" placeholder="姓">
+    <input type="text" v-model="lastName" placeholder="姓"><br>
     <input type="text" v-model="firstName" placeholder="名">
     <h2>拼接：{{fullName}}</h2>
+    <button @click='changechild'>改变子组件数据动态传递给父组件</button>
   </div>
 </template>
 
@@ -19,22 +22,22 @@
 export default {
   components: {},
   // props只用于在子组件中接收父组件传递的数据
-  props: ["message", "textFalther"],
+  // data为父组件声明的传递数据的变量名
+  props: ['message','number'],
   data() {
     return {
       // 子向父传递的数据
-      text: "你好啊！",
       firstName: "",
       lastName: ""
     };
   },
   //组件生命周期函数
   beforeCreate() {
-    console.log("beforeCreate");
+    // console.log("beforeCreate");
   },
   //当进入组件之前，执行 beforRouteEnter 路由钩子函数(组件独享守卫)
   beforeRouteEnter(to, from, next) {
-    console.log("beforRouteEnter");
+    // console.log("beforRouteEnter");
     console.log(this); // 结果为undefined，因为在执行beforRouteEnter时候，组件还没有被创建出来；先执行beforRouteEnter，再执行beforeCreate
     next(vm => {
       //参数vm就是当前组件的实例。
@@ -65,10 +68,21 @@ export default {
       // $emit第一个参数为父组件定义的自定义
       //事件(父组件中用@acprop="方法名",执行方法接收传递的参数)，
       //第二个参数以及以后都是为传递的参数
-      this.$emit("acprop", this.text);
+      this.$emit("acprop", this.number);
+    },
+    changechild(){
+      // 将子组件更新的数据绑定到父组件上 使用.sync绑定父组件中的props对象 不用再定义方法接收
+      this.$emit('update:number',Math.floor(Math.random(1,2)*100))
+    },
+    console_log(){
+      // 通过router-link传递的参数
+      let textchild = this.$route.params.textchild;
+      console.log(textchild);
     }
   },
-  created() {},
+  created() {
+    this.console_log();
+  },
   mounted() {}
 };
 </script>

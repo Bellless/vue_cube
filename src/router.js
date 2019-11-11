@@ -14,7 +14,7 @@ const vueRouter = new Router({
   // base: '/app/',
   //当浏览器不支持 history.pushState,控制路由是否应该回退到hash模式
   fallback: true,
-  // mode: 'history',
+  mode: 'history',
   routes: [{
       // 一级路由(/[根路由==项目运行时第一个显示的组件])
       path: '/',
@@ -38,7 +38,7 @@ const vueRouter = new Router({
       //  meta: {
       //    keepAlive: true // 组件是否需要被缓存
       //  }
-      // 二级路由
+      // 二级路由(一级路由会跟随二级路由一起显示)
       children: [{
           path: '/about',
           name: 'about',
@@ -68,6 +68,11 @@ const vueRouter = new Router({
       path: '/ShoppingCart',
       name: 'shoppingCart',
       component: () => import('./components/shopping/ShoppingCart.vue'),
+    },
+    {
+      path: '/Common',
+      name: 'Common',
+      component: () => import('./components/Common.vue'),
     }
   ],
 })  

@@ -246,7 +246,8 @@ export default {
   position: relative;
   display: flex;
   flex-flow: row wrap; // 从左往右排列 换行显示
-  justify-content: space-around; // 定义子元素在主轴上的对齐方式
+  justify-content: space-around; // 定义子元素在X轴上的对齐方式
+  // align-items:center;//定义子元素在Y轴上的对齐方式
   width: 100%;
 }
 

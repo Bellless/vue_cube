@@ -1,14 +1,14 @@
 <template>
   <div class="about" v-if="isShow">
-    <common @acprop="acprop" :message="acptText" />
-    <div @click="log" class="divText">
-      <a class="aa">
-        conslog
-      </a>
-      <router-link to="/Car">Car<br></router-link>
-      <router-link to="/Classification">Classification</router-link>
+    <!-- :message中的message/data为父组件传递的数据 common子组件中使用propes[message/date]接收 动态绑定数据到子组件中 -->
+    <!-- :childtwo="one" :childtone="two" -->
+    <common @acprop='aceptchild' message="aaa" :number.sync='num'/>
+    <button @click='changechild'>改变父组件中数据动态传递给子组件</button>
+    <div class="divText">
+      <!-- 子向父传递的数据 -->
+      <router-link :to="{name:'Common',params:{textchild:'父向子组件路由传值'}}">Common组件</router-link>
     </div>
-    <router-view />
+    <a>子组件传递过来的参数:{{textchild}}</a>
   </div>
 </template>
 <script>
@@ -30,18 +30,18 @@ export default {
   },
   data() {
     return {
-      acptText: ""
+      acptText: "1",
+      // childone:'5',
+      // childtwo:'10',
+      textchild:'',
+      num:'',
     };
   },
   methods: {
-    acprop(val) {
-      this.acptText = val;
-      console.log(
-        "子向父传递的数据时定义的接收方法应在父组件中@声明接收，接收的数据为" +
-          this.acptText
-      );
+    aceptchild(val) {
+      this.textchild = val;
     },
-    log() {
+    console_log() {
       // 接收vuex中的初始化方法或数据
       console.log(this.$store.getters.isShow);
       // 接收父页面传过来的值(1.采用router-link方式2.也可以直接用props方式
@@ -54,15 +54,20 @@ export default {
       console.log(this.$parent.name);
       // localStorage.clear();
       // alert("清除存储值成功！")
-      this.reload(); // 调用方法
+      // this.reload(); // 调用方法
     },
     upprovide() {
       // 这里修改之后 App.vue 也会响应数据的变化
       this.INFO.asideW = "200px";
     },
+    changechild(){
+      // 将子组件更新的数据绑定到父组件上 使用.sync绑定父组件中的props对象 不用再定义方法接收
+      this.num=Math.floor(Math.random(1,2)*100);
+    }
   },
   created() {
     // alert("刷新了当前页面");
+    this.console_log();
   }
 };
 </script>

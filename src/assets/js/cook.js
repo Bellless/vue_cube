@@ -1,6 +1,7 @@
 import Cookies from 'js-cookie'
 
 // 使用token字段存储值，初始值为空
+// 用户手动输入token 浏览器就保存起来
 const TokenKey = 'token'
 
 const Cookie = {
