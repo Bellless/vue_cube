@@ -15,7 +15,7 @@
     <input type="text" v-model="lastName" placeholder="姓"><br>
     <input type="text" v-model="firstName" placeholder="名">
     <h2>拼接：{{fullName}}</h2>
-    <button @click='changechild'>改变子组件数据动态传递给父组件</button>
+    <button @click='changechild'>改变子组件中数据动态传递给父组件</button>
   </div>
 </template>
 
