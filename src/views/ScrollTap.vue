@@ -84,15 +84,16 @@ export default {
             content: "豪华型"
           }
         ],
-        // 选中回调
+        // 选中回调函数
         onSelect: (item, index) => {
+          // show()显示,hide()隐藏
           this.$createToast({
             txt: `Clicked ${item.content}`,
             type: "correct",
             time: 1000
           }).show();
         },
-        // 取消回调
+        // 取消回调函数
         onCancel: () => {
           this.$createToast({
             txt: `Clicked canceled`,
