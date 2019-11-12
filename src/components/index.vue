@@ -109,6 +109,7 @@ export default {
   justify-content: center; /* 定义子元素相对父元素在主轴上的对齐方式(水平方向)*/
   align-items: center; /*  定义子元素相对父元素在交叉轴上如何对齐(竖着方向)*/
 }
+// 伪类元素使用
 .border_xia::before{
   content ''
   display inline-block

@@ -6,9 +6,9 @@
     <button @click='changechild'>改变父组件中数据动态传递给子组件</button>
     <div class="divText">
       <!-- 子向父传递的数据 -->
-      <router-link :to="{name:'Common',params:{textchild:'父向子组件路由传值'}}">Common组件</router-link>
     </div>
-    <a>子组件传递过来的参数:{{textchild}}</a>
+    <a>子组件传递过来的参数:{{textchildtwo}}</a><br>
+    <router-link :to="{name:'Common',params:{textchild:'父向子组件路由传值'}}">Common组件</router-link>
   </div>
 </template>
 <script>
@@ -33,13 +33,14 @@ export default {
       acptText: "1",
       // childone:'5',
       // childtwo:'10',
-      textchild:'',
+      textchildtwo:'',
       num:'',
     };
   },
   methods: {
     aceptchild(val) {
-      this.textchild = val;
+      alert("bbb")
+      this.textchildtwo = val;
     },
     console_log() {
       // 接收vuex中的初始化方法或数据
@@ -75,7 +76,7 @@ export default {
 <style lang="stylus" scoped>
 .about {
   position: relative;
-  padding: 50px;
+  padding-top 50px;
 }
 
 .divText {

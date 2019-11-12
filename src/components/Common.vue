@@ -7,9 +7,10 @@
     </div>
     <!-- 像父组件传递about.vue传递参数 -->
     <div>
-      <button @click="sendpro">像父组件传递参数</button><br>
+      <button @click="sendpro">向父组件传递数据</button><br>
       <span class="generic">父组件传递的数据childtwo为:{{message}}</span><br>
-      <span class="generic">父组件传递的数据childone为:{{number}}</span>
+      <span class="generic">父组件传递的数据childone为:{{number}}</span><br>
+      <span class="generic">父组件通过router-link传值textchild为:{{textchild}}</span>
     </div>
     <input type="text" v-model="lastName" placeholder="姓"><br>
     <input type="text" v-model="firstName" placeholder="名">
@@ -28,7 +29,9 @@ export default {
     return {
       // 子向父传递的数据
       firstName: "",
-      lastName: ""
+      lastName: "",
+      textchild:"",
+      childata:'你好 父组件',
     };
   },
   //组件生命周期函数
@@ -68,7 +71,8 @@ export default {
       // $emit第一个参数为父组件定义的自定义
       //事件(父组件中用@acprop="方法名",执行方法接收传递的参数)，
       //第二个参数以及以后都是为传递的参数
-      this.$emit("acprop", this.number);
+      alert("aaaa")
+      this.$emit("acprop", this.childata);
     },
     changechild(){
       // 将子组件更新的数据绑定到父组件上 使用.sync绑定父组件中的props对象 不用再定义方法接收
@@ -76,7 +80,7 @@ export default {
     },
     console_log(){
       // 通过router-link传递的参数
-      let textchild = this.$route.params.textchild;
+      this.textchild = this.$route.params.textchild;
       console.log(textchild);
     }
   },
