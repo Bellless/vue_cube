@@ -38,7 +38,7 @@ export default {
   beforeCreate() {
     // console.log("beforeCreate");
   },
-  //当进入组件之前，执行 beforRouteEnter 路由钩子函数(组件独享守卫)
+  //(组件独享守卫) 当进入组件之前，执行 beforRouteEnter 路由钩子函数
   beforeRouteEnter(to, from, next) {
     // console.log("beforRouteEnter");
     console.log(this); // 结果为undefined，因为在执行beforRouteEnter时候，组件还没有被创建出来；先执行beforRouteEnter，再执行beforeCreate
@@ -47,12 +47,12 @@ export default {
       vm.test = "我被改变了";
     });
   },
-  // (组件独享守卫)
+  // (组件独享守卫) 当组件更新时 执行该守卫
   beforeRouteUpdate(to, from, next) {
     console.log("beforeRouteUpdate");
     next();
   },
-  // (组件独享守卫)
+  // (组件独享守卫) 当组件离开时 执行该守卫
   beforeRouteLeave(to, from, next) {
     //离开组件的时候触发
     //什么都不写的时候，不会离开(走下一步)
