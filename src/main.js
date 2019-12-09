@@ -9,6 +9,7 @@ import Cook from './assets/js/cook'
 import apiAxios from './assets/js/axios'
 // 全局注册过滤器方法
 import * as filters from './assets/js/filter'
+// import eventBus from './assets/js/eventBus'
 Object.keys(filters).forEach(key => Vue.filter(key, filters[key]));
 
 Vue.use(apiAxios)
@@ -16,7 +17,13 @@ Vue.use(apiAxios)
 Vue.prototype.$Cook = Cook
 Vue.config.productionTip = false
 
+// 子父组件传递数据的方法 eventBus.$emit()--传递（子） eventBus.$on()--接收（父）
+// 注册全局事件对象
+// Vue.prototype.$eventBus = eventBus;
+window.eventBus = new Vue();
+
 new Vue({
+  components: { App },
   router,
   store,
   render: h => h(App)

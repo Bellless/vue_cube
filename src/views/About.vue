@@ -39,7 +39,7 @@ export default {
   },
   methods: {
     aceptchild(val) {
-      alert("bbb")
+      // alert("bbb")
       this.textchildtwo = val;
     },
     console_log() {
@@ -69,6 +69,12 @@ export default {
   created() {
     // alert("刷新了当前页面");
     this.console_log();
+  },
+  mounted(){
+    eventBus.$on('eventbusname',function(val){
+      console.log(val);
+      alert("aaaa")
+    })
   }
 };
 </script>

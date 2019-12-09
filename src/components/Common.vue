@@ -10,7 +10,7 @@
       <button @click="sendpro">向父组件传递数据</button><br>
       <span class="generic">父组件传递的数据childtwo为:{{message}}</span><br>
       <span class="generic">父组件传递的数据childone为:{{number}}</span><br>
-      <span class="generic">父组件通过router-link传值textchild为:{{textchild}}</span>
+      <!-- <span class="generic">父组件通过router-link传值textchild为:{{textchild}}</span> -->
     </div>
     <input type="text" v-model="lastName" placeholder="姓"><br>
     <input type="text" v-model="firstName" placeholder="名">
@@ -30,7 +30,7 @@ export default {
       // 子向父传递的数据
       firstName: "",
       lastName: "",
-      textchild:"",
+      // textchild:"",
       childata:'你好 父组件',
     };
   },
@@ -59,6 +59,7 @@ export default {
     next();//直接执行to的路径 如果没有指定to的路径则不执行
   },
   watch: {},
+  // 计算属性
   computed: {
     //fullName为监听对象(data里面的数据变化时,fullName方法会自动执行)
     //计算属性有缓存不用重新编译，watch属性需重新编译，尽量使用computed代替watch,节约性能
@@ -71,8 +72,9 @@ export default {
       // $emit第一个参数为父组件定义的自定义
       //事件(父组件中用@acprop="方法名",执行方法接收传递的参数)，
       //第二个参数以及以后都是为传递的参数
-      alert("aaaa")
+      // alert("aaaa")
       this.$emit("acprop", this.childata);
+      eventBus.$emit('eventbusname','我是子向父传递的值')
     },
     changechild(){
       // 将子组件更新的数据绑定到父组件上 使用.sync绑定父组件中的props对象 不用再定义方法接收
@@ -80,8 +82,8 @@ export default {
     },
     console_log(){
       // 通过router-link传递的参数
-      this.textchild = this.$route.params.textchild;
-      console.log(textchild);
+      // this.textchild = this.$route.params.textchild;
+      // console.log(textchild);
     }
   },
   created() {
