@@ -191,13 +191,13 @@ export default {
           alert("跳转首页");
           break;
         case "分类":
-          this.$router.push("/Classification");
-          this.$router.push({ name: "classification" });
+          // 动态跳转到路由组件中
+          // this.$router.push("/Classification");
+          this.$router.push("/Classification",{ name: "classification" });
           break;
         case "购物车":
-          // 动态跳转到路由组件中
-          this.$router.push("/ShoppingCart");
-          this.$router.push({ name: "shoppingCart" });
+          // this.$router.push("/ShoppingCart");
+          this.$router.push("/ShoppingCart",{ name: "shoppingCart" });
           break;
         case "我的":
           alert("跳转我的");
