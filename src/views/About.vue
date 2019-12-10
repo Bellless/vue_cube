@@ -25,7 +25,10 @@ export default {
     isShow() {
       // 两种调用store中的数据方式
       //  return this.$store.getters.isShow;
+      // 动态调用vuex里面中的某个方法
       return this.$store.dispatch("showFooter");
+      // 指定vuex的一个值
+      // return this.$store.data.showFooter;
     }
   },
   data() {

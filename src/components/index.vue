@@ -65,7 +65,8 @@ export default {
   computed: {},
   methods: {
     upprovide() {
-      this.asideW = "500px"; // 修改 属性值得变化，可以传递到 子孙后代的任意组件 同时响应变化
+      // 修改 属性值得变化，可以传递到 子孙后代的任意组件 同时响应变化
+      this.asideW = "500px"; 
     },
     // 父组件定义刷新方法
     reload() {

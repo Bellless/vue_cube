@@ -22,19 +22,23 @@ const getters = {
 };
 // 定义改变state的初始值的方法
 const mutations = {
-  show(state) { //自定义改变state初始值的方法，这里面的参数除了state之外还可以再传额外的参数(变量或对象);
-    state.showFooter = true;
-  },
+  //自定义改变state初始值的方法，
+  //这里面的参数除了state之外还可以再传额外的参数(变量或对象);
   hide(state) { //同上
     state.showFooter = false;
   },
-  newNum(state, sum) { //同上，这里面的参数除了state之外还传了需要增加的值(实参)sum
+  show(state) {
+    state.showFooter = true;
+  },
+  //同上，这里面的参数除了state之外还传了需要增加的值(实参)sum
+  newNum(state, sum) { 
     state.changableNum += sum;
   }
 };
 // 异步触发mutations里面的方法
 const actions = {
-  hideFooter(context) { //自定义触发mutations里函数的方法，context与store 实例具有相同方法和属性
+  //自定义触发mutations里函数的方法，context与store 实例具有相同方法和属性
+  hideFooter(context) { 
     context.commit('hide');
   },
   showFooter(context) { //同上注释
